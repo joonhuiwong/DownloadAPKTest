@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         String apkUrl = "https://github.com/joonhuiwong/my_library/releases/download/0.5-pre-release/my_library_v0.5.apk";
 
         downloadController = new DownloadController(this, apkUrl);
+        downloadController.cleanUp(); // Clean up APK
 
         buttonDownload = findViewById(R.id.buttonDownload);
         mainLayout = findViewById(R.id.mainLayout);

@@ -17,15 +17,6 @@ import com.joonhuiwong.downloadapktest.R;
 
 import java.io.File;
 
-/**
- * This is an exercise to learn how to programmatically download and install APKs.
- * This would be useful for deploying updates to client devices without having to remote in.
- * If done correctly, we would just need a hidden menu/button/option for staff to trigger the update when needed.
- *
- * Resource: https://androidwave.com/download-and-install-apk-programmatically/
- * This code is converted from Kotlin into Java.
- */
-
 public class DownloadController {
 
     public static final String FILE_NAME = "SampleDownloadApp.apk";
@@ -40,6 +31,17 @@ public class DownloadController {
     public DownloadController(Context context, String url) {
         this.context = context;
         this.url = url;
+    }
+
+    public void cleanUp() {
+        String destination = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).toString() + "/";
+        destination += FILE_NAME;
+
+        File file = new File(destination);
+
+        if (file.exists()) {
+            file.delete();
+        }
     }
 
     public void enqueueDownload() {
